@@ -1,0 +1,10 @@
+VAGRANT_API_VERSION = "2"
+
+Vagrant.configure(VAGRANT_API_VERSION) do |config|
+
+  # config.vm ==> virtual machine
+  # config.vm.box ==> VM image
+
+  config.vm.box = "centos/7"
+
+end

@@ -1,0 +1,53 @@
+VAGRANT_API_VERSION = "2"
+
+$install_nginx =  <<-NGINX
+  yum -y update && yum -y install epel-release 
+  yum -y install nginx
+  systemctl enable nginx
+  systemctl start nginx
+NGINX
+
+$install_database =  <<-NGINX
+  echo "Installing database"
+NGINX
+
+Vagrant.configure(VAGRANT_API_VERSION) do |config|
+
+  # config.vm ==> virtual machine
+  # config.vm.box ==> VM image
+
+  config.vm.define "webserver" do |webserver|
+   # First VM definition
+   webserver.vm.box = "centos/7"
+   webserver.vm.hostname = "webserver" 
+   webserver.vm.post_up_message = "This is a webserver for development, do not use in production"
+   webserver.vm.provider "virtualbox" do |vb|
+     # Display the VirtualBox GUI when booting the machine
+     vb.gui = true
+     # Customize the amount of memory on the VM:
+     vb.memory = "512"
+     vb.cpus = 1
+   end
+   webserver.vm.provision "shell", inline: $install_nginx
+
+  end
+
+  config.vm.define "database" do |database|
+    # Second VM definition 
+    database.vm.box = "centos/7"
+    database.vm.hostname = "database" 
+    database.vm.post_up_message = "This is a database for development, do not use in production"
+    database.vm.provider "virtualbox" do |vb|
+      # Display the VirtualBox GUI when booting the machine
+      vb.gui = true
+      # Customize the amount of memory on the VM:
+      vb.memory = "512"
+      vb.cpus = 1
+    end
+    database.vm.provision "shell", inline: $install_database
+
+  end
+
+
+ 
+end

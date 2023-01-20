@@ -1,0 +1,16 @@
+---
+- hosts: all
+  tasks:
+    - name: 1. Install EPEL-Release
+      yum:
+        name: epel-release
+        state: latest
+    - name: 2. Nginx
+      yum:
+        name: nginx
+        state: latest 
+    - name: 3. Enable the NGINX service
+      service: 
+        name: nginx 
+        state: started
+        enabled: yes 

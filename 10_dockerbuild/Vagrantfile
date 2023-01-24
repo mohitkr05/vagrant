@@ -1,0 +1,13 @@
+Vagrant.configure("2") do |config|
+
+    config.vm.provider "docker" do |docker|
+      docker.build_dir = "."
+      docker.ports = ["80:80"]
+      docker.name = "nginx_build"
+
+     
+    end
+    
+    
+  end
+  

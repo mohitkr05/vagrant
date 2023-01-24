@@ -1,0 +1,30 @@
+VAGRANT_API_VERSION = "2"
+
+servers = [
+  {:hostname => "node1", :cpus => 1, :memory => 512, :box=> "centos/7" , :message=> "custom message for vm 1"},
+  {:hostname => "node2", :cpus => 1, :memory => 512, :box=> "centos/7" , :message=> "custom message for vm 2"},
+  {:hostname => "node3", :cpus => 1, :memory => 512, :box=> "centos/7" , :message=> "custom message for vm 3"}
+]
+
+Vagrant.configure(VAGRANT_API_VERSION) do |config|
+
+  servers.each do |server|
+
+    config.vm.define server[:hostname] do |nodeconfig|
+
+      nodeconfig.vm.box = server[:box]
+      nodeconfig.vm.hostname = server[:hostname]
+      nodeconfig.vm.post_up_message = server[:message]
+        nodeconfig.vm.provider "virtualbox" do |vb|
+          # Display the VirtualBox GUI when booting the machine
+          vb.gui = true
+          # Customize the amount of memory on the VM:
+          vb.memory = server[:memory]
+          vb.cpus = server[:cpus]
+        end
+      end
+
+  end
+  
+
+end

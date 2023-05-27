@@ -1,0 +1,38 @@
+# Vagrantfile
+VAGRANT_API_VERSION = "2"
+
+Vagrant.configure(VAGRANT_API_VERSION) do |config|
+    # Define master node
+    config.vm.define "master" do |master|
+      
+      master.vm.box = "ubuntu/kinetic64"
+      master.vm.hostname = "master"
+      master.vm.network :private_network, ip: "10.0.0.10"
+      master.vm.provision "shell", path: "common.sh"
+      master.vm.provision "shell", path: "master-node.sh"
+      master.vm.provider "virtualbox" do |vb|
+        # Display the VirtualBox GUI when booting the machine
+        vb.gui = true
+        # Customize the amount of memory on the VM:
+        vb.memory = "2048"
+        vb.cpus = 2
+      end
+      
+    end
+  
+    # Define worker nodes
+    (1..2).each do |i|
+      config.vm.define "worker#{i}" do |worker|
+        worker.vm.box = "ubuntu/kinetic64"
+        worker.vm.hostname = "worker#{i}"
+        worker.vm.network "private_network", ip: "10.0.0.#{i+10}"
+        worker.vm.provision "shell", path: "worker-node.sh"
+        worker.vm.provider "virtualbox" do |vb|
+          # Display the VirtualBox GUI when booting the machine
+          vb.gui = true
+          vb.memory = "512"
+          vb.cpus = 1
+        end
+      end
+    end
+  end

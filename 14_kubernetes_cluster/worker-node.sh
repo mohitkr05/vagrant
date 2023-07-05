@@ -12,4 +12,4 @@ apt-get update
 apt-get install -y kubelet kubeadm kubectl
 
 # Join worker node to the Kubernetes cluster
-kubeadm join 192.168.50.10:6443 --token <token> --discovery-token-ca-cert-hash <hash>
+# kubeadm join 192.168.50.10:6443 --token <token> --discovery-token-ca-cert-hash <hash>

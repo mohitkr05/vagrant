@@ -46,15 +46,15 @@ The cluster will contain the master node and worker nodes, most of the configura
 The configuration will have the following nodes
 
 - Master Node:  192.168.56.101 – master.example.com
-- First Worker Node:  192.168.56.101 – worker1.example.com
-- Second Worker Node:  192.168.56.102 – worker2.example.com
+- First Worker Node:  192.168.56.111 – worker1.example.com
+- Second Worker Node:  192.168.56.112 – worker2.example.com
 
 1. For interworking, all the three nodes will have the configuration in the `/etc/hosts` file.
 
 ```
 192.168.56.101   master.example.com   master
-192.168.56.101   worker1.example.com worker1
-192.168.56.102   worker2.example.com worker2
+192.168.56.111   worker1.example.com worker1
+192.168.56.112   worker2.example.com worker2
 ```
 
 2. Disabling swap

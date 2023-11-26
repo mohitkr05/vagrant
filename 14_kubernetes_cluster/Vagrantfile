@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "master" do |master|
     master.vm.box = BASE_BOX_IMAGE
     master.vm.hostname = "master.example.com"
-    master.vm.network "private_network", ip: "192.168.56.100"
+    master.vm.network "private_network", ip: "192.168.56.101"
     master.vm.network "forwarded_port", guest: 6443, host: 6443
     master.vm.provider "virtualbox" do |vb|
       vb.name = "master"
@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
       config.vm.define "worker#{i}" do |worker|
         worker.vm.box = BASE_BOX_IMAGE
         worker.vm.hostname = "worker#{i}.example.com"
-        worker.vm.network "private_network", ip: "192.168.56.10#{i}"
+        worker.vm.network "private_network", ip: "192.168.56.11#{i}"
         worker.vm.provider "virtualbox" do |vb|
           vb.name = "worker#{i}"
           vb.cpus = CPUS_WORKER

@@ -1,7 +1,9 @@
 #!/bin/bash
 
+sudo apt install -y chrony
+# /etc/chrony/chrony.conf
 
-sudo apt install -y nova-compute mariadb-server python3-pymysql python3-openstackclient python3-novaclients  rabbitmq-server memcached python3-memcache etcd
+sudo apt install -y nova-compute mariadb-server python3-pymysql python3-openstackclient python3-novaclients  rabbitmq-server memcached python3-memcache etcd openstack-dashboard
 sudo rabbitmqctl add_user openstack 123456789
 sudo rabbitmqctl set_permissions openstack ".*" ".*" ".*"
 
@@ -16,7 +18,11 @@ ETCD_LISTEN_PEER_URLS="http://0.0.0.0:2380"
 ETCD_LISTEN_CLIENT_URLS="http://192.168.56.254:2379"
 
 
-GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY '123456789';
+GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' IDENTIFIED BY '123456789';
+GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY '123456789';
+
+
+GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIED BY '123456789';
 GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY '123456789';
 
 
@@ -38,3 +44,7 @@ export OS_IDENTITY_API_VERSION=3
 
 
 CREATE USER 'keystone'@'%' IDENTIFIED BY '123456789';
+
+
+GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' IDENTIFIED BY '123456789';
+GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY '123456789';

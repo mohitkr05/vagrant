@@ -4,9 +4,9 @@
 # 1. Hostnames
 
 sudo tee /etc/hosts > /dev/null <<EOF
-192.168.56.100   master.example.com   master
-192.168.56.101   worker1.example.com worker1
-192.168.56.102   worker2.example.com worker2
+192.168.56.101   master.example.com   master
+192.168.56.111   worker1.example.com worker1
+192.168.56.112   worker2.example.com worker2
 EOF
 
 # 2. Disable the swap

@@ -1,0 +1,18 @@
+VAGRANT_API_VERSION = "2"
+
+Vagrant.configure(VAGRANT_API_VERSION) do |config|
+  config.vm.box = "ubuntu/jammy64"
+  config.vm.network "private_network", ip: "192.168.56.254"
+  config.vm.network :private_network, ip: "172.24.1.2",
+  :netmask => "255.255.255.0", :auto_config => false
+  # config.vm.network "forwarded_port", guest: 5000, host: 5000
+  config.vm.provider "virtualbox" do |vb|
+      vb.name = "devstack"
+      vb.cpus = 4
+      vb.memory = 8192
+      vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
+  end
+
+  config.vm.provision "shell", path: "devstack.sh"
+
+end

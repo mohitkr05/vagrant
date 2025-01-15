@@ -1,5 +1,4 @@
 <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/mohitkr05/vagrant" data-size="large" data-show-count="true" aria-label="Star mohitkr05/vagrant on GitHub">Star</a>
 
 # Vagrant - A complete hands-on guide
 
@@ -15,18 +14,20 @@ Prerequisites
 - Vagrant
 - VirtualBox or any other compatible provider
 - Basic knowledge of virtualization
-or, get my course
+  or, get my course
 
 ## Installation
+
 - Install Vagrant: Download and install Vagrant from the official website.
 - Install VirtualBox: Download and install VirtualBox from the official website. Alternatively, you can use any other provider that Vagrant supports.
 
 ## Usage
+
 - Each directory contains a different project.
   - `git clone https://github.com/mohitkr05/vagrant.git`
-- Enter the directory 
+- Enter the directory
   - `cd vagrant`
-- Check the project example 
+- Check the project example
   - cd `01_VM`
 - Run the project
   - `vagrant up`
@@ -42,15 +43,14 @@ or, get my course
 
 You can customize your Vagrant environment by editing the Vagrantfile. This includes configurations like:
 
- - VM Box selection
- - Network settings
- - Synced folders
- - Provider-specific settings
+- VM Box selection
+- Network settings
+- Synced folders
+- Provider-specific settings
 
 ## Contributing
 
 Contributions to this project are welcome!
-
 
 ## License
 
@@ -58,4 +58,4 @@ This project is licensed under the MIT License.
 
 ## Acknowledgements
 
-Thanks to the Vagrant community for their continuous support and contributions.
+Thanks to the Vagrant community for their continuous support and contributions

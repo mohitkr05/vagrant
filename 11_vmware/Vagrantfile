@@ -9,7 +9,3 @@ Vagrant.configure("2") do |config|
     vmware.gui = true 
   end
 end
-
-
-
-

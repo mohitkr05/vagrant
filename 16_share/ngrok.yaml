@@ -1,0 +1,7 @@
+
+tunnels:
+  http:
+    proto: http
+    bind_tls: false
+    addr: '8080'
+
